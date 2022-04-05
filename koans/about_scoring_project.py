@@ -32,9 +32,48 @@ from runner.koan import *
 #
 # Your goal is to write the score method.
 
+
+def tallied(dice):
+    t = dict()
+    for die in dice:
+        if die not in t.keys():
+            t[die] = 1
+        else:
+            t[die] += 1
+    return t
+
+
 def score(dice):
-    # You need to write this method
-    pass
+    total = 0
+    tally = tallied(dice)
+
+    for (die, count) in tally.items():
+        if count >= 3:
+            total += score_triples(die)
+            total += score_singles(die, count - 3)
+        else:
+            total += score_singles(die, count)
+
+    return total
+
+
+def score_singles(die, count):
+    single_score_map = {1: 100, 5: 50}
+
+    if die in single_score_map.keys():
+        return single_score_map[die] * count
+    else:
+        return 0
+
+
+def score_triples(die):
+    if die == 1:
+        return 1000
+    else:
+        return die * 100
+
+
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
