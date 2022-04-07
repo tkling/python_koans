@@ -5,8 +5,6 @@ from runner.koan import *
 
 
 class AboutComprehension(Koan):
-
-
     def test_creating_lists_with_list_comprehensions(self):
         feast = ['lambs', 'sloths', 'orangutans', 'breakfast cereals', 'fruit bats']
 

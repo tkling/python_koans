@@ -130,7 +130,6 @@ class AboutClassAttributes(Koan):
         self.assertEqual("Fido", self.Dog3.get_name())
 
     # ------------------------------------------------------------------
-
     class Dog4:
         def a_class_method(cls):
             return 'dogs class method'
